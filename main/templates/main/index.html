@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="author" content="Michael Zeng">
+    <title>PrintForTheCure</title>
+    {% load static %}
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <!--pace (page loader) style-->
+    <link href="{% static 'assets/plugins/pace/pace.css' %}" rel="stylesheet" />
+    <script src="{% static 'assets/plugins/pace/pace.min.js' %}"></script>
+
+    <!-- Bootstrap -->
+    <link href="{% static 'assets/plugins/bootstrap-3.3.1/css/bootstrap.min.css' %}" rel="stylesheet" />
+    <!-- Icons -->
+    <link href="{% static 'assets/plugins/font-awesome-4.2.0/css/font-awesome.min.css' %}" rel="stylesheet" />
+    <!-- typed style -->
+    <link href="{% static 'assets/plugins/typed/typed.css' %}" rel="stylesheet">
+    <!-- popup style-->
+    <link href="{% static 'assets/plugins/magnific-popup/magnific-popup.css' %}" rel="stylesheet">
+
+
+    <!-- Themes styles-->
+    <link href="{% static 'assets/theme/css/style.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- black skin-->
+    <!-- <link href="{% static 'assets/theme/css/skin-black.css' %}" rel="stylesheet"> -->
+    <style>
+    /*Home Background Picture*/
+    .main-pict {
+      height: 600px;
+      position: relative;
+    }
+    .main-pict .header-content-fixed {
+      height: 600px;
+      background: url(https://images.pexels.com/photos/301703/pexels-photo-301703.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260) no-repeat center;
+      background-size: cover;
+      background-attachment: fixed;
+      text-align: center;
+      position: fixed;
+      z-index: 0;
+      width: 100%;
+    }
+
+    @media (max-width: 1024px) {
+      .main-pict .header-content-fixed {
+        position: relative;
+      }
+    }
+    /*.main-pict:hover .header-content-fixed:before {
+      background: rgba(255, 255, 255, 0.9);
+    }
+    .main-pict:hover .header-content-fixed:after {
+      background: rgba(255, 255, 255, 0.8);
+    }*/
+    .main-pict .whoim {
+      position: absolute;
+      width: 100%;
+      z-index: 3;
+      top: 100px;
+    }
+    .main-pict .name {
+      font-size: 60px;
+      margin-bottom: 20px;
+      font-weight: 700;
+      position: relative;
+      z-index: 3;
+      letter-spacing: 10px;
+    }
+
+    .login {
+
+      margin-bottom: 20px;
+      font-weight: 700;
+      position: relative;
+      z-index: 3;
+      letter-spacing: 10px;
+    }
+
+    @media (max-width: 1030px) {
+      .main-pict .name {
+        font-size: 3em;
+      }
+    }
+    .main-pict .job {
+      position: relative;
+      display: inline-block;
+      z-index: 3;
+      border-bottom: 1px solid #000000;
+      padding: 10px;
+      letter-spacing: 4px;
+    }
+
+    /*THE MOVEMENT 3D Printer Picture*/
+    .my-profile .printer-pict {
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+
+      background-image: url('static/assets/theme/images/grandmother_and_granddaughter.jpg');
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      z-index: 99;
+    }
+    @media (max-width: 880px) {
+      .my-profile .printer-pict {
+        position: relative;
+        height: 300px;
+      }
+    }
+    .my-profile .printer-pict .overfly {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 0;
+      transition: all 0.8s ease 0s;
+      -webkit-transition: all 0.8s ease 0s;
+      -moz-transition: all 0.8s ease 0s;
+      -o-transition: all 0.8s ease 0s;
+      -ms-transition: all 0.8s ease 0s;
+      overflow: hidden;
+      height: 100%;
+    }
+    .my-profile .printer-pict .overfly .text-botttom {
+      position: absolute;
+      width: 100%;
+      transition: all 0.8s ease 0s;
+      -webkit-transition: all 0.8s ease 0s;
+      -moz-transition: all 0.8s ease 0s;
+      -o-transition: all 0.8s ease 0s;
+      -ms-transition: all 0.8s ease 0s;
+      bottom: 0;
+      right: 0;
+      padding: 40px;
+      text-align: right;
+    }
+    .my-profile .printer-pict .overfly:hover {
+      /*        background: transparent;
+                    .text-botttom{
+                      bottom: -100%;
+                    }*/
+
+    }
+    .my-profile .my-desc,
+    .my-profile .printer-pict {
+      width: 50%;
+    }
+    @media (max-width: 880px) {
+      .my-profile .my-desc,
+      .my-profile .printer-pict {
+        width: 100% !important;
+      }
+    }
+
+    /**/
+    .footer-pict {
+      background-image: url(https://images.pexels.com/photos/3881247/pexels-photo-3881247.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+    }
+
+
+    .row {
+      display: flex; /* equal height of the children */
+    }
+    </style>
+  </head>
+
+
+  <body  data-spy="scroll" data-target=".menu-area" data-offset="200">
+    <!--wrapper page-->
+    <div class="wrapper">
+
+      <!-- Main Header -->
+      <header class="main-pict main-header" id="home">
+        <div class="content-table header-content-fixed ">
+
+          <div class="v-content">
+            <div class="container">
+              <h1 style="font-size:1100%;" class=" color-dark name">Boxobby</h1>
+              <a href="#about" class="move-to-next link-inpage"><i class="fa fa-4x fa-angle-double-down" ></i></a>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Main navbar -->
+        <div class="menu-area">
+          <div class="toogle-bars">
+            <a href="#menu-collapse" data-toggle="collapse" class="collapsed"><i class="fa fa-bars ic-open"></i> <i class="fa fa-remove ic-close"></i> MENU</a>
+          </div>
+          <div class="menu-collapse collapse" id="menu-collapse">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                  <ul class="breadcrumb main-nav nav">
+                    <li class="active"><a href="#home" class="link-inpage">Home</a></li>
+                    <li ><a href="#ourStory" class="link-inpage">Our Story</a></li>
+                    <li ><a href="#ourStory" class="link-inpage">Hobby Crates</a></li>
+                    <li ><a href="#ourStory" class="link-inpage">Order Now</a></li>
+                    <li ><a href="#ourStory" class="link-inpage">Testimonials</a></li>
+                    <li ><a href="#ourStory" class="link-inpage">Contact Us</a></li>
+                    <!-- <script>
+                      var onClick = function() {
+                        document.getElementsById("nearest").innerHTML = "Loading ... ";
+                      };
+                      document.getElementsById("loading").addEventListener('click', onClick, false);
+                    </script> -->
+                  </ul>
+                </div>
+                <div class="col-md-2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- End Main Header -->
+
+      <section id="ourStory" class="block-section">
+        <div class="clearfix my-profile">
+
+
+
+
+          <div style="z-index: 100" class="bg-secondary block-title">
+            <div class="container">
+              <h1 class="text-uppercase color-dark text-bold no-margin">The Boxobby Story</h1>
+              <div class="title-icon"> <i class="fa fa-heartbeat"></i> </div>
+
+            </div>
+          </div>
+
+
+
+          <div style="z-index: 1;" class="my-desc">
+            <div style="z-index: 1; background-color: white;" class="bg-secondary clearfix">
+              <div class="inner-text">
+                <p style="font-size: 160%;">It began with a mission to help all seniors find a passion. And so Boxobby made their <span style="color:#06BCC1;">revolutionary</span> hobby box, delivering instructions and materials for you to try a new hobby every month, tailored to <span style="color:#E63E62;">your interests</span>, with a single quick purchase.</p>
+                <br />
+                <p style="font-size: 160%;">Nowadays, Boxobby brings <span style="color:#06BCC1;">beautiful</span> packages of hours of fun and enjoyment, great for all ages, and perfect as a gift. <span style="color:#06BCC1;">What hobbies shall you receive?</span></p>
+              </div>
+            </div>
+            <div class="bg-dark clearfix">
+              <div class="inner-text">
+                <p class="no-margin color-light ">
+
+                  <strong class="fix-width-100"><i class="fa fa-phone margin-right-5"></i> Phone</strong> : 858-324-6183<br/>
+                  <strong class="fix-width-100"><i class="fa fa-envelope margin-right-5"></i> Email</strong> : info@boxobby.com<br/>
+
+                  <strong class="fix-width-100"><i class="fa fa-globe margin-right-5"></i> Website</strong> : boxobby.com<br/>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="printer-pict" >
+            <div class="overfly">
+              <div class="text-botttom">
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </section>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{% static 'assets/plugins/jquery.js' %}"></script>
+    <script src="{% static 'assets/plugins/bootstrap-3.3.1/js/bootstrap.min.js' %}"></script>
+
+    <!-- maps js -->
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/jquery.ui.map.js' %}"></script>
+    <!-- advanced easing options -->
+    <script src="{% static 'assets/plugins/jquery.easing-1.3.pack.js' %}"></script>
+    <!-- parallax bg js -->
+    <script src="{% static 'assets/plugins/jquery.parallax-1.1.3.js' %}"></script>
+    <!-- lightbox js -->
+    <script src="{% static 'assets/plugins/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
+    <!-- typed animation-->
+    <script src="{% static 'assets/plugins/typed/typed.js' %}"></script>
+    <!-- easy chart-->
+    <script src="{% static 'assets/plugins/easypiechart/jquery.easypiechart.min.js' %}"></script>
+    <!-- simple Ajax Uploader -->
+    <script src="{% static 'assets/plugins/Simple-Ajax-Uploader/SimpleAjaxUploader.min.js' %}"></script>
+    <!-- validate jquery-->
+    <script src="{% static 'assets/plugins/validator/jquery.validate.min.js' %}"></script>
+
+    <!--=====================================================-->
+    <!--configuration template-->
+    <script src="{% static 'assets/theme/js/theme.js' %}"></script>
+  </body>
+  <!--Non styled home page-->
+  <!--
+  {% if authenticated %}
+    <form style="padding-bottom:1em;" method="POST">
+      {% csrf_token %}
+      <input type="hidden" name="logout" value="logout"></input>
+      <button type="submit" class="btn btn-danger">Logout</button>
+    </form>
+  {% else %}
+    <form style="padding-bottom:1em;" method="POST">
+      {% csrf_token %}
+      <input type="hidden" name="login" value="login"></input>
+      <button type="submit" class="btn btn-danger">Login</button>
+    </form>
+  {% endif %}
+
+  <form style="padding-bottom:1em;" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="submitRequest" value="submitRequest"></input>
+    <button type="submit" class="btn btn-danger">Submit a Request For PPE</button>
+  </form>
+
+  <form style="padding-bottom:1em;" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="mapView" value="mapView"></input>
+    <button type="submit" class="btn btn-danger">See Local Requests For PPE</button>
+  </form>
+
+  <form style="padding-bottom:1em;" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="shield"></input>
+    <button type="submit" class="btn btn-danger">shield</button>
+  </form>
+
+  <form style="padding-bottom:1em;" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="opener"></input>
+    <button type="submit" class="btn btn-danger">opener</button>
+  </form>
+
+  <form style="padding-bottom:1em;" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="hook"></input>
+    <button type="submit" class="btn btn-danger">hook</button>
+  </form>
+
+  <form style="padding-bottom:1em;" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="handle"></input>
+    <button type="submit" class="btn btn-danger">handle</button>
+  </form> -->
+</html>
